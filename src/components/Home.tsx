@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import {Platform, StyleSheet} from 'react-native'
 import {Actions} from 'react-native-router-flux'

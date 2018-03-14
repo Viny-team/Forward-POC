@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import Home from './components/Home'
 import Chat from './components/Chat'
@@ -11,7 +11,7 @@ export default class App extends React.Component {
     render() {
         return (
             <Router>
-                <Scene key='root' style={styles.rootScene}>
+                <Scene key='root' style={styles.rootScene} title='menu' component={null} >
                     <Scene key='home' component={Home} title='Home' />
                     <Scene key='chat' component={Chat} title='Chat' />
                 </Scene>

@@ -38,7 +38,7 @@ export default class HomeScreen extends React.Component<Props, States> {
         <TextInput
           style={{ width: "80%" }}
           placeholder="Merci de renseigner votre prénom"
-          onChangeText={text => this.setState({ text })}
+          onChangeText={(text: string) => this.setState({ text })}
         />
         <TouchableOpacity
           style={{ marginTop: 40 }}

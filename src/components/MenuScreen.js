@@ -23,7 +23,7 @@ export default class MenuScreen extends React.Component<Props, States> {
   }
 
   _bootstrap = async () => {
-    const username = await AsyncStorage.getItem("username")
+    const username: string = await AsyncStorage.getItem("username")
     this.setState({ username })
   }
 

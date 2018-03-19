@@ -10,7 +10,7 @@ type States = {
   username: string
 }
 
-export default class MenuScreen extends React.Component<Props, States> {
+export default class HomeScreen extends React.Component<Props, States> {
   static navigationOptions = {
     title: "Menu Principal"
   }

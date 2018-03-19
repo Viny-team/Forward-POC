@@ -1,9 +1,9 @@
 // @flow
 
 import { StackNavigator, SwitchNavigator } from "react-navigation"
-import MenuScreen from "../components/MenuScreen"
-import ChatScreen from "../components/ChatScreen"
-import HomeScreen from "../components/HomeScreen"
+import LoginScreen from "../screens/login"
+import ChatScreen from "../screens/chat"
+import HomeScreen from "../screens/home"
 
 export const ROUTE_APP = "App"
 export const ROUTE_APP_MENU = "Menu"
@@ -11,7 +11,7 @@ export const ROUTE_APP_CHAT = "Chat"
 
 const AppStack = StackNavigator(
   {
-    Menu: MenuScreen,
+    Menu: HomeScreen,
     Chat: ChatScreen
   },
   {
@@ -21,10 +21,10 @@ const AppStack = StackNavigator(
 
 export default SwitchNavigator(
   {
-    Home: HomeScreen,
+    Login: LoginScreen,
     App: AppStack
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Login"
   }
 )

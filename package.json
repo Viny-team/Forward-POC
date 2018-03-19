@@ -26,9 +26,16 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "native-base": "^2.3.10",
+    "lodash": "^4.17.5",
+    "moment": "^2.21.0",
     "react": "16.2.0",
     "react-native": "0.52.0",
-    "react-navigation": "^1.5.7"
+    "react-native-keyboard-spacer": "^0.4.1",
+    "react-native-linear-gradient": "^2.4.0",
+    "react-native-progress-bar": "^0.1.2",
+    "react-native-switch-pro": "^0.4.10",
+    "react-native-ui-kitten": "^3.0.0",
+    "react-navigation": "^1.5.7",
+    "victory-native": "^0.17.2"
   }
 }

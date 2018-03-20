@@ -6,7 +6,8 @@ import {
   Dimensions,
   ScrollView,
   View,
-  Keyboard
+  Keyboard,
+  FlatList
 } from "react-native"
 import {
   RkText,
@@ -17,6 +18,7 @@ import {
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import { DrawerWrapper, Separator } from "../components"
 import { scaleWidth } from "../utils/scale"
+import { sleep } from "../utils/wait"
 const { width, height } = Dimensions.get("window")
 
 type Props = {
@@ -24,11 +26,14 @@ type Props = {
 }
 type States = {
   username: string,
-  messages: Message[]
+  messages: Message[],
+  id: number
 }
+
 type Message = {
   message: string,
-  owned: boolean
+  owned: boolean,
+  id: number
 }
 
 export default class ChatScreen extends React.Component<Props, States> {
@@ -45,13 +50,16 @@ export default class ChatScreen extends React.Component<Props, States> {
       messages: [
         {
           message: "Salut toi, tu veux quoi?",
-          owned: false
+          owned: false,
+          id: 0
         },
         {
           message: "Je veux boiiiireee",
-          owned: true
+          owned: true,
+          id: 1
         }
-      ]
+      ],
+      id: 2
     }
     this._bootstrap()
   }
@@ -61,55 +69,69 @@ export default class ChatScreen extends React.Component<Props, States> {
     this.setState({ username })
   }
 
-  _renderAllMessages(messages: Message[]) {
-    let resp = []
-    messages.forEach((m, key) => resp.push(this._renderMessage(m, key)))
-    return resp
-  }
-
-  _renderMessage(m: Message, key: number) {
+  _renderMessage(info) {
     return (
-      <View style={{ flex: 1, width: "100%" }} key={key}>
+      <View
+        style={{
+          flex: 1,
+          width: "100%",
+          marginBottom: 15
+        }}
+      >
         <View
           style={{
-            alignSelf: m.owned ? "flex-end" : "flex-start",
+            alignSelf: info.item.owned ? "flex-end" : "flex-start",
             borderRadius: 25,
             width: 300,
             backgroundColor: "red",
             padding: 15
           }}
         >
-          <RkText>{m.message}</RkText>
+          <RkText>{info.item.message}</RkText>
         </View>
-        <Separator size={15} />
       </View>
     )
   }
 
   _handleButton() {
+    this._pushMessage("Allô, t'es encore là?", true)
+    sleep(
+      250,
+      this._pushMessage.bind(this),
+      "Je suis encore là, mais mon développeur a oublié d'implémenter un semblant d'intelligence...",
+      false
+    )
+  }
+
+  _pushMessage(message: string, owned: boolean) {
     this.setState({
       messages: [
         ...this.state.messages,
         {
-          message: "Allô, t'es encore là?",
-          owned: true
+          message: message,
+          owned: owned,
+          id: this.state.id
         }
-      ]
+      ],
+      id: this.state.id + 1
     })
   }
 
   render() {
     return (
       <DrawerWrapper navigation={this.props.navigation}>
-        <ScrollView
+        <FlatList
+          ref="list"
           style={{
-            width: width,
+            padding: 15,
             backgroundColor: "#333",
-            padding: 15
+            width: width
           }}
-        >
-          {this._renderAllMessages(this.state.messages)}
-        </ScrollView>
+          extraData={this.state}
+          data={this.state.messages}
+          renderItem={this._renderMessage}
+          keyExtractor={(item: Message) => item.id.toString()}
+        />
         <View style={{ width: width, padding: 15 }}>
           <RkButton
             rkType="rounded stretch"

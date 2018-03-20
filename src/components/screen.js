@@ -17,7 +17,6 @@ export class Screen extends RkComponent<Props, States> {
   render() {
     return (
       <RkAvoidKeyboard
-        onStartShouldSetResponder={e => true}
         onResponderRelease={e => Keyboard.dismiss()}
         style={styles.screen}
       >

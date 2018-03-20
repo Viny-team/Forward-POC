@@ -1,0 +1,272 @@
+{
+  "messages": [
+    {
+      "id": 0,
+      "message": "Sur quel alcool ce concentre votre recherche ?",
+      "answers": [
+        {
+          "message": "VIN",
+          "next": 1
+        },
+        {
+          "message": "SPIRITUEUX",
+          "next": 2
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "message": "Pour quelle situation souhaiter vous votre bouteille ?",
+      "type": "answers",
+      "answers": [
+        {
+          "message": "Pour un repas",
+          "next": 3
+        },
+        {
+          "message": "Pour offrir",
+          "next": 4
+        },
+        {
+          "message": "Pour ma consommation personnelle",
+          "next": 4
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "message": "Pour quelle situation souhaiter vous votre bouteille ?",
+      "type": "answers",
+      "answers": [
+        {
+          "message": "Pour un repas",
+          "next": 6
+        },
+        {
+          "message": "Pour offrir",
+          "next": 7
+        },
+        {
+          "message": "Pour ma consommation personnelle",
+          "next": 7
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "message": "Qu'aller vous consommer durant votre repas",
+      "type": "answers",
+      "answers": [
+        {
+          "message": "Viande blanche",
+          "next": 9
+        },
+        {
+          "message": "Viande rouge",
+          "next": 10
+        },
+        {
+          "message": "Poisson",
+          "next": 11
+        },
+        {
+          "message": "Dessert",
+          "next": 12
+        }
+        ]
+    },
+    {
+      "id": 4,
+      "message": "Préférer vous un vin blanc ou un vin rouge",
+      "type": "answers",
+      "answers": [
+        {
+          "message": "Rouge",
+          "next": 13
+        },
+        {
+          "message": "Blanc",
+          "next": 14
+        }
+        ]
+    },
+    {
+      "id": 6,
+      "message": "Qu’aller vous consommer durant votre repas ?",
+      "type": "answers",
+      "answers": [
+        {
+          "message": "Poisson",
+          "next": 17
+        },
+        {
+          "message": "Digestif",
+          "next": 18
+        }
+        ]
+    },
+    {
+      "id": 7,
+      "message": "Préferez vous un whisky ou un digestif ?",
+      "type": "answers",
+      "answers": [
+        {
+          "message": "Whisky",
+          "next": 19
+        },
+        {
+          "message": "Digestif",
+          "next": 20
+        }
+        ]
+    },
+    {
+      "id": 9,
+      "message": "Préférez vous un vin blanc ou un vin rouge ?",
+      "type": "answers",
+      "answers": [
+        {
+          "message": "Rouge",
+          "next": 21
+        },
+        {
+          "message": "Blanc",
+          "next": 22
+        }
+        ]
+    },
+    {
+      "id": 10,
+      "message": "Avez vous une préférence de cépage ?",
+      "type": "answers",
+      "answers": [
+        {
+          "message": "Bourgogne",
+          "next": 23
+        },
+        {
+          "message": "Bordeaux",
+          "next": 24
+        },
+        {
+          "message": "Peu m'importe",
+          "next": 25
+        }
+        ]
+    },
+    {
+      "id": 11,
+      "type": "response",
+      "ids": ["2","7"]
+    },
+    {
+      "id": 12,
+      "type": "response",
+      "ids": ["2", "6"]
+    },
+    {
+      "id": 13,
+      "message": "Quelle saveur souhaiter vous ?",
+      "type": "answers",
+      "answers": [
+          {
+            "message":"Fruité",
+            "next": 26
+          },
+          {
+            "message": "Floral",
+            "next": 27
+          },
+          {
+            "message": "Suave",
+            "next": 28
+          }
+        ]
+    },
+    {
+      "id": 14,
+      "type": "reponse",
+      "ids": ["6","7"]
+    },
+    {
+      "id": 17,
+      "type":"response",
+      "ids": ["8"]
+    },
+    {
+      "id": 18,
+      "type":"response",
+      "ids": ["9","10"]
+    },
+    {
+      "id": 19,
+      "type": "reponse",
+      "ids": ["8"]
+    },
+    {
+      "id": 20,
+      "message": "Plutôt Guennièvre ou Cognac ?",
+      "type": "answers",
+      "answers": [
+        {
+          "message": "Guenièvre",
+          "next": 29
+        },
+        {
+          "message": "Cognac",
+          "next": 30
+        }
+        ]
+    },
+    {
+      "id": 21,
+      "type": "response",
+      "ids": ["2","4","5"]
+    },
+    {
+      "id": 22,
+      "type": "response",
+      "ids": ["7"]
+    },
+    {
+      "id": 23,
+      "type": "response",
+      "ids": ["0","2"]
+    },
+    {
+      "id": 24,
+      "type": "response",
+      "ids": ["5"]
+    },
+    {
+      "id": 25,
+      "type": "response",
+      "ids": ["0","2","3","4","5"]
+    },
+    {
+      "id": 26,
+      "type": "response",
+      "ids": ["1","2","4","5"]
+    },
+    {
+      "id": 27,
+      "type": "response",
+      "ids": ["0","4"]
+    },
+    {
+      "id": 28,
+      "type": "response",
+      "ids": ["0","1","5"]
+    },
+    {
+      "id": 29,
+      "type": "response",
+      "ids": ["9"]
+    },
+    {
+      "id": 30,
+      "type": "response",
+      "ids": ["10"]
+    }
+  ]
+}

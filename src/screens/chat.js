@@ -25,15 +25,21 @@ type Props = {
   navigation: any
 }
 type States = {
+  actualId: number,
   username: string,
   messages: Message[],
-  id: number
+  buttons: Button[]
 }
 
 type Message = {
+  id: number,
   message: string,
-  owned: boolean,
-  id: number
+  owned: boolean
+}
+type Button = {
+  id: number,
+  message: string,
+  responseMessage: number
 }
 
 export default class ChatScreen extends React.Component<Props, States> {
@@ -49,17 +55,29 @@ export default class ChatScreen extends React.Component<Props, States> {
       username: "",
       messages: [
         {
+          id: 0,
           message: "Salut toi, tu veux quoi?",
-          owned: false,
-          id: 0
+          owned: false
         },
         {
+          id: 1,
           message: "Je veux boiiiireee",
-          owned: true,
-          id: 1
+          owned: true
         }
       ],
-      id: 2
+      buttons: [
+        {
+          id: 0,
+          message: "Je suis la première réponse",
+          responseMessage: 1
+        },
+        {
+          id: 2,
+          message: "Je suis la deuxième réponse",
+          responseMessage: 2
+        }
+      ],
+      actualId: 2
     }
     this._bootstrap()
   }
@@ -93,16 +111,6 @@ export default class ChatScreen extends React.Component<Props, States> {
     )
   }
 
-  _handleButton() {
-    this._pushMessage("Allô, t'es encore là?", true)
-    sleep(
-      250,
-      this._pushMessage.bind(this),
-      "Je suis encore là, mais mon développeur a oublié d'implémenter un semblant d'intelligence...",
-      false
-    )
-  }
-
   _pushMessage(message: string, owned: boolean) {
     this.setState({
       messages: [
@@ -110,11 +118,44 @@ export default class ChatScreen extends React.Component<Props, States> {
         {
           message: message,
           owned: owned,
-          id: this.state.id
+          id: this.state.actualId
         }
       ],
-      id: this.state.id + 1
+      actualId: this.state.actualId + 1
     })
+  }
+
+  _renderAllButtons(buttons: Button[]) {
+    let res = []
+    buttons.forEach((button: Button, index: number) => {
+      res.push(this._renderButton(button, index.toString()))
+    })
+    return res
+  }
+
+  _renderButton(button: Button, key: string) {
+    return (
+      <RkButton
+        style={{ marginBottom: 15 }}
+        rkType="rounded stretch"
+        onPress={() =>
+          this._handleButton(button.message, button.responseMessage)
+        }
+        key={key}
+      >
+        {button.message}
+      </RkButton>
+    )
+  }
+
+  _handleButton(message: string, responseMessage: number) {
+    this._pushMessage(message, true)
+    sleep(
+      250,
+      this._pushMessage.bind(this),
+      "Je ne connais pas encore: " + responseMessage.toString(),
+      false
+    )
   }
 
   render() {
@@ -132,15 +173,8 @@ export default class ChatScreen extends React.Component<Props, States> {
           renderItem={this._renderMessage}
           keyExtractor={(item: Message) => item.id.toString()}
         />
-        <View style={{ width: width, padding: 15 }}>
-          <RkButton
-            rkType="rounded stretch"
-            onPress={() => this._handleButton()}
-          >
-            Reponse 1
-          </RkButton>
-          <Separator size={15} />
-          <RkButton rkType="rounded stretch">Reponse 2</RkButton>
+        <View style={{ width: width, padding: 15, paddingBottom: 0 }}>
+          {this._renderAllButtons(this.state.buttons)}
         </View>
       </DrawerWrapper>
     )

@@ -4,8 +4,7 @@ import * as React from "react"
 import { View, Keyboard, TouchableOpacity } from "react-native"
 import { RkButton, RkAvoidKeyboard, RkStyleSheet } from "react-native-ui-kitten"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
-import Screen from "./screen"
-import Header from "./header"
+import { Screen, Header } from "."
 
 type Props = {
   navigation: any,
@@ -13,7 +12,7 @@ type Props = {
 }
 type States = {}
 
-export default class DrawerWrapper extends React.Component<Props, States> {
+export class DrawerWrapper extends React.Component<Props, States> {
   render() {
     return (
       <Screen>

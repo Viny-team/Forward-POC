@@ -9,7 +9,7 @@ type Props = {
 }
 type States = {}
 
-export default class Screen extends React.Component<Props, States> {
+export class Screen extends React.Component<Props, States> {
   render() {
     return (
       <RkAvoidKeyboard

@@ -10,7 +10,7 @@ import {
   RkStyleSheet
 } from "react-native-ui-kitten"
 import { scale, scaleModerate, scaleVertical } from "../utils/scale"
-import Screen from "../components/screen"
+import { Screen } from "../components"
 
 type Props = {
   navigation: any

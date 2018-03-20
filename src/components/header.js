@@ -9,7 +9,7 @@ type Props = {
 }
 type States = {}
 
-export default class Header extends React.Component<Props, States> {
+export class Header extends React.Component<Props, States> {
   render() {
     return (
       <View style={styles.header}>

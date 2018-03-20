@@ -9,7 +9,7 @@ import {
   RkStyleSheet
 } from "react-native-ui-kitten"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
-import DrawerWrapper from "../components/drawerWrapper"
+import { DrawerWrapper } from "../components"
 
 type Props = {
   navigation: any

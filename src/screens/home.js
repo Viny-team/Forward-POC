@@ -21,7 +21,7 @@ type States = {
 export default class HomeScreen extends React.Component<Props, States> {
   static navigationOptions = {
     drawerLabel: "Accueil",
-    drawerIcon: () => <Icon name="home" size={24} />
+    drawerIcon: <Icon name="home" size={24} />
   }
 
   constructor(props: Props) {
@@ -31,7 +31,7 @@ export default class HomeScreen extends React.Component<Props, States> {
     this._bootstrap()
   }
 
-  _bootstrap = async () => {
+  async _bootstrap() {
     const username: string = await AsyncStorage.getItem("username")
     this.setState({ username })
   }

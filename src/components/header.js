@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { View, StyleSheet, TouchableOpacity } from "react-native"
+import { RkComponent } from "react-native-ui-kitten"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 }
 type States = {}
 
-export class Header extends React.Component<Props, States> {
+export class Header extends RkComponent<Props, States> {
   render() {
     return (
       <View style={styles.header}>

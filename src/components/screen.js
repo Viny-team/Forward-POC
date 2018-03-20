@@ -2,14 +2,18 @@
 
 import * as React from "react"
 import { Keyboard } from "react-native"
-import { RkAvoidKeyboard, RkStyleSheet } from "react-native-ui-kitten"
+import {
+  RkComponent,
+  RkAvoidKeyboard,
+  RkStyleSheet
+} from "react-native-ui-kitten"
 
 type Props = {
   children: any
 }
 type States = {}
 
-export class Screen extends React.Component<Props, States> {
+export class Screen extends RkComponent<Props, States> {
   render() {
     return (
       <RkAvoidKeyboard

@@ -2,7 +2,12 @@
 
 import * as React from "react"
 import { View, Keyboard, TouchableOpacity } from "react-native"
-import { RkButton, RkAvoidKeyboard, RkStyleSheet } from "react-native-ui-kitten"
+import {
+  RkComponent,
+  RkButton,
+  RkAvoidKeyboard,
+  RkStyleSheet
+} from "react-native-ui-kitten"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import { Screen, Header } from "."
 
@@ -12,7 +17,7 @@ type Props = {
 }
 type States = {}
 
-export class DrawerWrapper extends React.Component<Props, States> {
+export class DrawerWrapper extends RkComponent<Props, States> {
   render() {
     return (
       <Screen>

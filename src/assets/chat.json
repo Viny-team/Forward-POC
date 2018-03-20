@@ -2,162 +2,163 @@
   "messages": [
     {
       "id": 0,
-      "message": "Sur quel alcool ce concentre votre recherche ?",
+      "message":
+        "Bonjour! Je suis Viny et je vais vous aider à trouver LA bouteille que vous cherchez. Sur quelle catégorie d'alcool se concentre votre recherche?",
       "answers": [
         {
-          "message": "VIN",
+          "message": "Je recherche un vin.",
           "next": 1
         },
         {
-          "message": "SPIRITUEUX",
+          "message": "Je recherche un spiritueux.",
           "next": 2
         }
       ]
     },
     {
       "id": 1,
-      "message": "Pour quelle situation souhaiter vous votre bouteille ?",
+      "message": "Un vin, très bien. Pour une situation particulière?",
       "type": "answers",
       "answers": [
         {
-          "message": "Pour un repas",
+          "message": "Pour un repas.",
           "next": 3
         },
         {
-          "message": "Pour offrir",
+          "message": "Pour offrir.",
           "next": 4
         },
         {
-          "message": "Pour ma consommation personnelle",
+          "message": "Pour ma consommation personnelle.",
           "next": 4
         }
       ]
     },
     {
       "id": 2,
-      "message": "Pour quelle situation souhaiter vous votre bouteille ?",
+      "message": "Un spiritueux, très bien. Pour une situation particulière ?",
       "type": "answers",
       "answers": [
         {
-          "message": "Pour un repas",
+          "message": "Pour un repas.",
           "next": 6
         },
         {
-          "message": "Pour offrir",
+          "message": "Pour offrir.",
           "next": 7
         },
         {
-          "message": "Pour ma consommation personnelle",
+          "message": "Pour ma consommation personnelle.",
           "next": 7
         }
       ]
     },
     {
       "id": 3,
-      "message": "Qu'aller vous consommer durant votre repas",
+      "message": "Quel type de repas le vin doit-il accompagner ?",
       "type": "answers",
       "answers": [
         {
-          "message": "Viande blanche",
+          "message": "De la viande blanche.",
           "next": 9
         },
         {
-          "message": "Viande rouge",
+          "message": "De la viande rouge.",
           "next": 10
         },
         {
-          "message": "Poisson",
+          "message": "Du poisson.",
           "next": 11
         },
         {
-          "message": "Dessert",
+          "message": "Un dessert.",
           "next": 12
         }
-        ]
+      ]
     },
     {
       "id": 4,
-      "message": "Préférer vous un vin blanc ou un vin rouge",
+      "message": "Plutôt un vin rouge ou un vin blanc?",
       "type": "answers",
       "answers": [
         {
-          "message": "Rouge",
+          "message": "Un vin rouge.",
           "next": 13
         },
         {
-          "message": "Blanc",
+          "message": "Un vin blanc.",
           "next": 14
         }
-        ]
+      ]
     },
     {
       "id": 6,
-      "message": "Qu’aller vous consommer durant votre repas ?",
+      "message": "Quel type de repas la bouteille doit-elle accompagner ?",
       "type": "answers",
       "answers": [
         {
-          "message": "Poisson",
+          "message": "Du poisson.",
           "next": 17
         },
         {
-          "message": "Digestif",
+          "message": "Plutôt en digestif.",
           "next": 18
         }
-        ]
+      ]
     },
     {
       "id": 7,
-      "message": "Préferez vous un whisky ou un digestif ?",
+      "message": "Préferez-vous un whisky ou un digestif?",
       "type": "answers",
       "answers": [
         {
-          "message": "Whisky",
+          "message": "Un whisky.",
           "next": 19
         },
         {
-          "message": "Digestif",
+          "message": "Un digestif.",
           "next": 20
         }
-        ]
+      ]
     },
     {
       "id": 9,
-      "message": "Préférez vous un vin blanc ou un vin rouge ?",
+      "message": "Plutôt un vin rouge ou un vin blanc?",
       "type": "answers",
       "answers": [
         {
-          "message": "Rouge",
+          "message": "Un vin rouge.",
           "next": 21
         },
         {
-          "message": "Blanc",
+          "message": "Un vin blanc.",
           "next": 22
         }
-        ]
+      ]
     },
     {
       "id": 10,
-      "message": "Avez vous une préférence de cépage ?",
+      "message": "Avez-vous une préférence de cépage?",
       "type": "answers",
       "answers": [
         {
-          "message": "Bourgogne",
+          "message": "Un bourgogne.",
           "next": 23
         },
         {
-          "message": "Bordeaux",
+          "message": "Un bordeaux.",
           "next": 24
         },
         {
-          "message": "Peu m'importe",
+          "message": "Peu m'importe.",
           "next": 25
         }
-        ]
+      ]
     },
     {
       "id": 11,
       "type": "response",
-      "ids": ["2","7"]
+      "ids": ["2", "7"]
     },
     {
       "id": 12,
@@ -166,37 +167,37 @@
     },
     {
       "id": 13,
-      "message": "Quelle saveur souhaiter vous ?",
+      "message": "Quelle caractéristique souhaiteriez-vous retrouver ?",
       "type": "answers",
       "answers": [
-          {
-            "message":"Fruité",
-            "next": 26
-          },
-          {
-            "message": "Floral",
-            "next": 27
-          },
-          {
-            "message": "Suave",
-            "next": 28
-          }
-        ]
+        {
+          "message": "Fruité.",
+          "next": 26
+        },
+        {
+          "message": "Floral.",
+          "next": 27
+        },
+        {
+          "message": "Suave.",
+          "next": 28
+        }
+      ]
     },
     {
       "id": 14,
       "type": "reponse",
-      "ids": ["6","7"]
+      "ids": ["6", "7"]
     },
     {
       "id": 17,
-      "type":"response",
+      "type": "response",
       "ids": ["8"]
     },
     {
       "id": 18,
-      "type":"response",
-      "ids": ["9","10"]
+      "type": "response",
+      "ids": ["9", "10"]
     },
     {
       "id": 19,
@@ -205,23 +206,23 @@
     },
     {
       "id": 20,
-      "message": "Plutôt Guennièvre ou Cognac ?",
+      "message": "Plutôt genièvre ou cognac?",
       "type": "answers",
       "answers": [
         {
-          "message": "Guenièvre",
+          "message": "Un genièvre.",
           "next": 29
         },
         {
-          "message": "Cognac",
+          "message": "Un cognac.",
           "next": 30
         }
-        ]
+      ]
     },
     {
       "id": 21,
       "type": "response",
-      "ids": ["2","4","5"]
+      "ids": ["2", "4", "5"]
     },
     {
       "id": 22,
@@ -231,7 +232,7 @@
     {
       "id": 23,
       "type": "response",
-      "ids": ["0","2"]
+      "ids": ["0", "2"]
     },
     {
       "id": 24,
@@ -241,22 +242,22 @@
     {
       "id": 25,
       "type": "response",
-      "ids": ["0","2","3","4","5"]
+      "ids": ["0", "2", "3", "4", "5"]
     },
     {
       "id": 26,
       "type": "response",
-      "ids": ["1","2","4","5"]
+      "ids": ["1", "2", "4", "5"]
     },
     {
       "id": 27,
       "type": "response",
-      "ids": ["0","4"]
+      "ids": ["0", "4"]
     },
     {
       "id": 28,
       "type": "response",
-      "ids": ["0","1","5"]
+      "ids": ["0", "1", "5"]
     },
     {
       "id": 29,

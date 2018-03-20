@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { ROUTE_APP } from "../config/router"
-import { AsyncStorage, View } from "react-native"
+import { AsyncStorage, View, Image } from "react-native"
 import {
   RkButton,
   RkTextInput,
@@ -10,6 +10,7 @@ import {
   RkStyleSheet
 } from "react-native-ui-kitten"
 import { Screen } from "../components"
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
 type Props = {
   navigation: any
@@ -38,8 +39,14 @@ export default class LoginScreen extends React.Component<Props, States> {
     return (
       <Screen>
         <View style={styles.container}>
+          <RkText style={{ color: "#661D32", fontSize: 80, marginBottom: 40 }}>
+            VINY
+          </RkText>
           <RkTextInput
             rkType="rounded stretch large"
+            label={
+              <Icon name="account" size={32} style={{ paddingLeft: 15 }} />
+            }
             placeholder="Nom d'utilisateur"
             onChangeText={(text: string) => this.setState({ text })}
           />
@@ -58,11 +65,12 @@ export default class LoginScreen extends React.Component<Props, States> {
 
 const styles = RkStyleSheet.create(theme => ({
   container: {
-    paddingHorizontal: 17,
+    paddingHorizontal: 30,
     alignItems: "center",
-    flex: -1
+    justifyContent: "center",
+    flex: 1
   },
   button: {
-    backgroundColor: theme.colors.button.highlight
+    backgroundColor: "#661D32"
   }
 }))

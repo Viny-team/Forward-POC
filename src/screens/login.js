@@ -2,15 +2,15 @@
 
 import * as React from "react"
 import { ROUTE_APP } from "../config/router"
-import { AsyncStorage, Keyboard, View } from "react-native"
+import { AsyncStorage, View } from "react-native"
 import {
-  RkAvoidKeyboard,
   RkButton,
   RkTextInput,
   RkText,
   RkStyleSheet
 } from "react-native-ui-kitten"
 import { scale, scaleModerate, scaleVertical } from "../utils/scale"
+import Screen from "../components/screen"
 
 type Props = {
   navigation: any
@@ -37,11 +37,7 @@ export default class LoginScreen extends React.Component<Props, States> {
 
   render() {
     return (
-      <RkAvoidKeyboard
-        onStartShouldSetResponder={e => true}
-        onResponderRelease={e => Keyboard.dismiss()}
-        style={styles.screen}
-      >
+      <Screen>
         <View style={styles.container}>
           <RkTextInput
             rkType="rounded stretch large"
@@ -56,17 +52,12 @@ export default class LoginScreen extends React.Component<Props, States> {
             Se connecter
           </RkButton>
         </View>
-      </RkAvoidKeyboard>
+      </Screen>
     )
   }
 }
 
 const styles = RkStyleSheet.create(theme => ({
-  screen: {
-    flex: 1,
-    justifyContent: "space-between",
-    backgroundColor: theme.colors.screen.base
-  },
   container: {
     paddingHorizontal: 17,
     alignItems: "center",

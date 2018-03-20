@@ -1,23 +1,46 @@
 // @flow
 
 import * as React from "react"
-import { View, Text } from "react-native"
+import { AsyncStorage, View, Keyboard } from "react-native"
+import {
+  RkText,
+  RkButton,
+  RkAvoidKeyboard,
+  RkStyleSheet
+} from "react-native-ui-kitten"
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import DrawerWrapper from "../components/drawerWrapper"
 
 type Props = {
   navigation: any
 }
-type States = {}
+type States = {
+  username: string
+}
 
 export default class ChatScreen extends React.Component<Props, States> {
   static navigationOptions = {
-    title: "Chat"
+    drawerLabel: "Chat",
+    drawerIcon: () => <Icon name="message-text" size={24} />
+  }
+
+  constructor(props: Props) {
+    super(props)
+
+    this.state = { username: "" }
+    this._bootstrap()
+  }
+
+  _bootstrap = async () => {
+    const username: string = await AsyncStorage.getItem("username")
+    this.setState({ username })
   }
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Chat Screen</Text>
-      </View>
+      <DrawerWrapper navigation={this.props.navigation}>
+        <RkText>I Chat with you {this.state.username}</RkText>
+      </DrawerWrapper>
     )
   }
 }

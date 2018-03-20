@@ -1,7 +1,15 @@
 // @flow
 
 import * as React from "react"
-import { AsyncStorage, View, Text } from "react-native"
+import { AsyncStorage, View, Keyboard } from "react-native"
+import {
+  RkText,
+  RkButton,
+  RkAvoidKeyboard,
+  RkStyleSheet
+} from "react-native-ui-kitten"
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import DrawerWrapper from "../components/drawerWrapper"
 
 type Props = {
   navigation: any
@@ -12,7 +20,8 @@ type States = {
 
 export default class HomeScreen extends React.Component<Props, States> {
   static navigationOptions = {
-    title: "Menu Principal"
+    drawerLabel: "Accueil",
+    drawerIcon: () => <Icon name="home" size={24} />
   }
 
   constructor(props: Props) {
@@ -29,9 +38,22 @@ export default class HomeScreen extends React.Component<Props, States> {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Bienvenue {this.state.username}</Text>
-      </View>
+      <DrawerWrapper navigation={this.props.navigation}>
+        <RkText>Hello {this.state.username}</RkText>
+      </DrawerWrapper>
     )
   }
 }
+
+const styles = RkStyleSheet.create(theme => ({
+  screen: {
+    flex: 1,
+    justifyContent: "space-between",
+    backgroundColor: theme.colors.screen.base
+  },
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  }
+}))

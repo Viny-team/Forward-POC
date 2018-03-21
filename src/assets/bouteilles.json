@@ -137,8 +137,9 @@
     {
       "id": 5,
       "name": "Château la Jorine",
-      "photoUrl": "https://cdn.ct-static.com/labels/886917.jpg",
-      "age": 2010,
+      "photoUrl":
+        "http://www.chateau-de-cornemps.com/uploads/pics/Lussac_saint_emilion_2000_150.jpg",
+      "age": 2000,
       "price": 8.5,
       "attributes": [
         "vin",

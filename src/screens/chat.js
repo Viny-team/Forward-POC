@@ -159,6 +159,7 @@ export default class ChatScreen extends React.Component<Props, States> {
 
   _pushChatbotMessage(resId: number) {
     const responseMessage = _.find(chatJson.messages, x => x.id == resId)
+    if (responseMessage == null) return
     if (responseMessage.type === "answers") {
       this._pushMessage(responseMessage.message, false)
       this.setState({

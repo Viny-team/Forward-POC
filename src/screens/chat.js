@@ -53,7 +53,7 @@ export default class ChatScreen extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props)
 
-    let firstMessage = _.find(chatJson.messages, x => x.id == 0)
+    const firstMessage = _.find(chatJson.messages, x => x.id == 0)
 
     this.state = {
       username: "",
@@ -74,7 +74,6 @@ export default class ChatScreen extends React.Component<Props, States> {
       actualId: 2
     }
 
-    console.log(this.state)
     this._bootstrap()
   }
 
@@ -155,7 +154,7 @@ export default class ChatScreen extends React.Component<Props, States> {
 
   _handleButton(message: string, responseMessage: number) {
     this._pushMessage(message, true)
-    sleep(1000, this._pushChatbotMessage.bind(this), responseMessage)
+    sleep(300, this._pushChatbotMessage.bind(this), responseMessage)
   }
 
   _pushChatbotMessage(resId: number) {

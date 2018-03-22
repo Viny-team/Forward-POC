@@ -19,7 +19,13 @@ type Props = {
   navigation: any
 }
 type States = {
-  username: string
+  username: string,
+  position: Position
+}
+
+type Position = {
+  latitude: number,
+  longitude: number
 }
 
 export default class MapsScreen extends React.Component<Props, States> {
@@ -31,7 +37,15 @@ export default class MapsScreen extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props)
 
-    this.state = { username: "" }
+    const position = navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        position: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }
+      })
+    })
+    this.state = { username: "", position: { latitude: 0, longitude: 0 } }
     this._bootstrap()
   }
 
@@ -47,10 +61,10 @@ export default class MapsScreen extends React.Component<Props, States> {
           <MapView
             style={{ width: "100%", height: "100%" }}
             initialRegion={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421
+              latitude: this.state.position.latitude,
+              longitude: this.state.position.longitude,
+              latitudeDelta: 0.07,
+              longitudeDelta: 0.07
             }}
           />
         </View>

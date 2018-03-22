@@ -49,7 +49,7 @@ export default class ArticlesScreen extends RkComponent<Props, States> {
     return (
       <RkCard style={{ marginBottom: 25 }}>
         <View rkCardHeader>
-          <RkText>{info.item.title}</RkText>
+          <RkText style={{ fontSize: 20 }}>{info.item.title}</RkText>
         </View>
         <Image
           rkCardImg
@@ -74,7 +74,7 @@ export default class ArticlesScreen extends RkComponent<Props, States> {
             } else {
               return (
                 <FlatList
-                  ref="articles"
+                  ref="bottles"
                   style={{
                     padding: 15,
                     width: "100%"

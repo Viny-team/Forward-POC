@@ -76,7 +76,7 @@ export default class MapsScreen extends React.Component<Props, States> {
                   longitude: caviste.longitude
                 }}
                 title={caviste.name}
-                description={"description"}
+                description={caviste.description}
               />
             ))}
           </MapView>

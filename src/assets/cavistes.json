@@ -4,43 +4,57 @@
       "id": 0,
       "name": "Les Vins d'Aurélien",
       "latitude": 50.6336131,
-      "longitude": 3.0606067
+      "longitude": 3.0606067,
+      "description":
+        "Caviste à Lille, je m'appelle Aurélien. Unique et indépendant, je propose des vignerons de toutes les régions de France et d'ailleurs, des petits propriétaires, des talents nouveaux, d'excellents rapports qualité/prix, des crus qui sortent de l'ordinaire, mais aussi de grands classiques et des vins prestigieux..."
     },
     {
       "id": 1,
       "name": "Le Comptoir Irlandais",
       "latitude": 50.6343884,
-      "longitude": 3.0604389
+      "longitude": 3.0604389,
+      "description":
+        "Le Comptoir Irlandais est une ancienne épicerie installée sur le port de Brest. Elle ravitaillait les bateaux en escale dans la rade. Au fil du temps, elle s'est spécialisée dans les produits venus d'Irlande. De découvertes en découvertes, du whisky..."
     },
     {
       "id": 2,
       "name": "La Cave du Parvis Saint Maurice",
       "latitude": 50.63521,
-      "longitude": 3.067171
+      "longitude": 3.067171,
+      "description":
+        " - C'est en plein cœur de Lille que la cave du parvis de Saint Maurice est située. A une rue de la gare Flandre plus exactement. Il est nécessaire de faire preuve d'un peu d'attention afin de ne pas rater l'étroite devanture, dans la mesure où bien que la cave soit étendue, elle l'est dans toute sa profondeur..."
     },
     {
       "id": 3,
       "name": "Nicolas",
       "latitude": 50.636963,
-      "longitude": 3.068233
+      "longitude": 3.068233,
+      "description":
+        " Nicolas est un caviste à part. C'est le seul marchand de vin à quadriller la France avec, au dernier recensement, 426 magasins. Nicolas est aussi le seul à s'être européanisé. Un exploit quand on connaît les différences de goût en matière de divin nectar entre les Britanniques, les Français ou les Belges..."
     },
     {
       "id": 4,
       "name": "Caviste Curieux",
       "latitude": 50.628888,
-      "longitude": 3.058484
+      "longitude": 3.058484,
+      "description":
+        "Ouvert en novembre, le Caviste curieux se situe à deux pas du théâtre Sébastopol, sur la place du même nom. Les entrepreneurs sont deux amis, Lillois d'adoption, Thomas et Stéphane, à l'accueil chaleureux et aux conseils précieux. Après avoir été pendant quatre ans caviste pour l'un et en formation ..."
     },
     {
       "id": 5,
       "name": "Cavavin",
       "latitude": 50.627398,
-      "longitude": 3.048379
+      "longitude": 3.048379,
+      "description":
+        "Cavavin dispose d'une salle qui va permettre l'organisation d'ateliers de dégustation, d'accords mets-vins. Salle dédiée également à différentes formes d'art. « J'ai de nombreux amis artistes, et je pense que les clients apprécieront, avant ou après leurs achats, de profiter d'un moment pour découvrir des ..."
     },
     {
       "id": 6,
       "name": "Les Domaines Qui Montent",
       "latitude": 50.636495,
-      "longitude": 3.059224
+      "longitude": 3.059224,
+      "description":
+        "Votre caviste à Lille vous accueille pour vous faire découvrir une large sélection de vins, champagnes, spiritueux, bières artisanales et produits du terroir. Autour de nos tables d’hôtes, profitez de la Formule du Caviste : chaque jour, un plat de résistance est mis à l’honneur avec au choix, l’entrée du jour ou le plateau de fromages fermiers ou le dessert de saison..."
     }
   ]
 }

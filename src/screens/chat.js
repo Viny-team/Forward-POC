@@ -8,7 +8,8 @@ import {
   View,
   Keyboard,
   FlatList,
-  Image
+  Image,
+  ActivityIndicator
 } from "react-native"
 import {
   RkText,
@@ -37,7 +38,7 @@ type States = {
   username: string,
   messages: Message[],
   buttons: Button[],
-  actualMessage: string,
+  actualMessage: any,
   vinyPhoto: string
 }
 
@@ -61,7 +62,9 @@ class FirstChatScreen extends RkComponent<Props, States> {
     this.state = {
       username: "",
       vinyPhoto: "base",
-      actualMessage: firstMessage.message,
+      actualMessage: (
+        <RkText style={{ color: "#fff" }}>{firstMessage.message}</RkText>
+      ),
       messages: [
         {
           id: firstMessage.id,
@@ -163,15 +166,21 @@ class FirstChatScreen extends RkComponent<Props, States> {
     )
   }
 
-  _handleButton(message: string, responseMessage: number) {
+  async _handleButton(message: string, responseMessage: number) {
     this._pushMessage(
       <RkText style={{ color: "#fff" }}>{message}</RkText>,
       true
     )
-    sleep(200, this._pushChatbotMessage.bind(this), responseMessage)
+    this.setState({
+      actualMessage: <ActivityIndicator size="large" color="#fff" />,
+      buttons: []
+    })
+    new Promise(r =>
+      sleep(750, this._pushChatbotMessage.bind(this), responseMessage)
+    )
   }
 
-  _pushChatbotMessage(resId: number) {
+  async _pushChatbotMessage(resId: number) {
     const responseMessage = _.find(chatJson.messages, x => x.id == resId)
     if (responseMessage == null) return
     if (responseMessage.type === "answers") {
@@ -180,7 +189,9 @@ class FirstChatScreen extends RkComponent<Props, States> {
         false
       )
       this.setState({
-        actualMessage: responseMessage.message,
+        actualMessage: (
+          <RkText style={{ color: "#fff" }}>{responseMessage.message}</RkText>
+        ),
         buttons: responseMessage.answers.map((x, i) => {
           return {
             id: i,
@@ -190,16 +201,20 @@ class FirstChatScreen extends RkComponent<Props, States> {
         })
       })
     } else {
-      this.setState({ buttons: [] })
-      this._pushMessage(
+      const message = (
         <RkText style={{ color: "#fff" }}>
           J'ai trouvé exactement ce qu'il vous faut !
-        </RkText>,
-        false
+        </RkText>
       )
-      sleep(500, this.props.navigation.navigate, "Second", {
-        bottleIds: responseMessage.ids
+      this._pushMessage(message, false)
+      this.setState({
+        actualMessage: message
       })
+      new Promise(r =>
+        sleep(1500, this.props.navigation.navigate, "Second", {
+          bottleIds: responseMessage.ids
+        })
+      )
     }
   }
 
@@ -223,9 +238,7 @@ class FirstChatScreen extends RkComponent<Props, States> {
                 backgroundColor: "#661D32"
               }}
             >
-              <RkText style={{ color: "#fff" }}>
-                {this.state.actualMessage}
-              </RkText>
+              {this.state.actualMessage}
             </View>
           </View>
           <Image

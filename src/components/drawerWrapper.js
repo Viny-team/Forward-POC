@@ -22,11 +22,7 @@ export class DrawerWrapper extends RkComponent<Props, States> {
     return (
       <Screen>
         <Header navigation={this.props.navigation} />
-        <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          {this.props.children}
-        </View>
+        {this.props.children}
       </Screen>
     )
   }

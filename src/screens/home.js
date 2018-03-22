@@ -1,21 +1,25 @@
 // @flow
 
 import * as React from "react"
-import { AsyncStorage, View, Keyboard } from "react-native"
+import { AsyncStorage, View, FlatList, Image, Keyboard } from "react-native"
 import {
   RkText,
   RkButton,
   RkAvoidKeyboard,
-  RkStyleSheet
+  RkStyleSheet,
+  RkCard
 } from "react-native-ui-kitten"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
-import { DrawerWrapper } from "../components"
+import { DrawerWrapper, Separator } from "../components"
+import _ from "lodash"
+const users = require("../assets/users.json").users
 
 type Props = {
   navigation: any
 }
 type States = {
-  username: string
+  username: string,
+  articles: any[]
 }
 
 export default class HomeScreen extends React.Component<Props, States> {
@@ -39,7 +43,18 @@ export default class HomeScreen extends React.Component<Props, States> {
   render() {
     return (
       <DrawerWrapper navigation={this.props.navigation}>
-        <RkText>Hello {this.state.username}</RkText>
+        <View style={{ flex: 1, alignItems: "center" }}>
+          <RkText style={{ fontSize: 40 }}>
+            Bienvenue {this.state.username}
+          </RkText>
+          <Separator size={20} />
+          <RkButton
+            rkType="rounded"
+            style={{ backgroundColor: "#661D32", width: 150 }}
+          >
+            Commencer une discussion
+          </RkButton>
+        </View>
       </DrawerWrapper>
     )
   }

@@ -12,6 +12,7 @@ import {
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import { DrawerWrapper, Separator } from "../components"
 import _ from "lodash"
+import { ROUTE_APP_CHAT } from "../config/router"
 const users = require("../assets/users.json").users
 
 type Props = {
@@ -66,6 +67,7 @@ export default class HomeScreen extends React.Component<Props, States> {
           <RkButton
             rkType="rounded"
             style={{ backgroundColor: "#661D32", width: 150 }}
+            onPress={() => this.props.navigation.navigate(ROUTE_APP_CHAT)}
           >
             Commencer une discussion
           </RkButton>

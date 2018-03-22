@@ -1,0 +1,46 @@
+{
+  "cellarmen": [
+    {
+      "id": 0,
+      "name": "Les Vins d'Aurélien",
+      "latitude": 50.6336131,
+      "longitude": 3.0606067
+    },
+    {
+      "id": 1,
+      "name": "Le Comptoir Irlandais",
+      "latitude": 50.6343884,
+      "longitude": 3.0604389
+    },
+    {
+      "id": 2,
+      "name": "La Cave du Parvis Saint Maurice",
+      "latitude": 50.63521,
+      "longitude": 3.067171
+    },
+    {
+      "id": 3,
+      "name": "Nicolas",
+      "latitude": 50.636963,
+      "longitude": 3.068233
+    },
+    {
+      "id": 4,
+      "name": "Caviste Curieux",
+      "latitude": 50.628888,
+      "longitude": 3.058484
+    },
+    {
+      "id": 5,
+      "name": "Cavavin",
+      "latitude": 50.627398,
+      "longitude": 3.048379
+    },
+    {
+      "id": 6,
+      "name": "Les Domaines Qui Montent",
+      "latitude": 50.636495,
+      "longitude": 3.059224
+    }
+  ]
+}

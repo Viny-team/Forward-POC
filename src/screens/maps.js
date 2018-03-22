@@ -11,9 +11,10 @@ import {
 } from "react-native-ui-kitten"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import { DrawerWrapper, Separator } from "../components"
-import MapView from "react-native-maps"
+import MapView, { Marker } from "react-native-maps"
 import _ from "lodash"
 const users = require("../assets/users.json").users
+const cavistes = require("../assets/cavistes.json").cellarmen
 
 type Props = {
   navigation: any
@@ -66,7 +67,19 @@ export default class MapsScreen extends React.Component<Props, States> {
               latitudeDelta: 0.07,
               longitudeDelta: 0.07
             }}
-          />
+          >
+            {cavistes.map(caviste => (
+              <Marker
+                key={caviste.id}
+                coordinate={{
+                  latitude: caviste.latitude,
+                  longitude: caviste.longitude
+                }}
+                title={caviste.name}
+                description={"description"}
+              />
+            ))}
+          </MapView>
         </View>
       </DrawerWrapper>
     )

@@ -309,6 +309,24 @@ class SecondChatScreen extends RkComponent<Props> {
           renderItem={this._renderMessage}
           keyExtractor={(item, i) => i.toString()}
         />
+        <RkButton
+          style={{
+            marginBottom: 15,
+            marginLeft: 20,
+            marginRight: 20,
+            backgroundColor: "#661D32"
+          }}
+          rkType="rounded stretch"
+          onPress={() => this.props.navigation.navigate("First")}
+        >
+          <RkText
+            style={{
+              color: "#fff"
+            }}
+          >
+            Recommencer la recherche
+          </RkText>
+        </RkButton>
       </View>
     )
   }

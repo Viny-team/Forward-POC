@@ -14,16 +14,20 @@ import {
   RkText,
   RkButton,
   RkAvoidKeyboard,
-  RkStyleSheet
+  RkStyleSheet,
+  RkComponent,
+  RkCard
 } from "react-native-ui-kitten"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import { DrawerWrapper, Separator } from "../components"
 import { scaleWidth } from "../utils/scale"
 import { sleep } from "../utils/wait"
 import _ from "lodash"
+import { SwitchNavigator } from "react-navigation"
 const { width, height } = Dimensions.get("window")
 const chatJson = require("../assets/chat.json")
-const bottlesJson = require("../assets/bouteilles.json")
+const bottlesJson = require("../assets/bouteilles.json").data
+const users = require("../assets/users.json").users
 
 type Props = {
   navigation: any
@@ -32,7 +36,9 @@ type States = {
   actualId: number,
   username: string,
   messages: Message[],
-  buttons: Button[]
+  buttons: Button[],
+  actualMessage: string,
+  vinyPhoto: string
 }
 
 type Message = {
@@ -46,12 +52,7 @@ type Button = {
   responseMessage: number
 }
 
-export default class ChatScreen extends React.Component<Props, States> {
-  static navigationOptions = {
-    drawerLabel: "Chat",
-    drawerIcon: <Icon name="message-text" size={24} />
-  }
-
+class FirstChatScreen extends RkComponent<Props, States> {
   constructor(props: Props) {
     super(props)
 
@@ -59,6 +60,8 @@ export default class ChatScreen extends React.Component<Props, States> {
 
     this.state = {
       username: "",
+      vinyPhoto: "base",
+      actualMessage: firstMessage.message,
       messages: [
         {
           id: firstMessage.id,
@@ -83,6 +86,10 @@ export default class ChatScreen extends React.Component<Props, States> {
 
   async _bootstrap() {
     const username: string = await AsyncStorage.getItem("username")
+    const user = _.find(users, { username })
+    if (user != null) {
+      this.setState({ vinyPhoto: user.viny })
+    }
     this.setState({ username })
   }
 
@@ -173,6 +180,7 @@ export default class ChatScreen extends React.Component<Props, States> {
         false
       )
       this.setState({
+        actualMessage: responseMessage.message,
         buttons: responseMessage.answers.map((x, i) => {
           return {
             id: i,
@@ -185,58 +193,46 @@ export default class ChatScreen extends React.Component<Props, States> {
       this.setState({ buttons: [] })
       this._pushMessage(
         <RkText style={{ color: "#fff" }}>
-          Voici ce que je vous propose:
+          J'ai trouvé exactement ce qu'il vous faut !
         </RkText>,
         false
       )
-      responseMessage.ids.forEach(x => {
-        let bottle = _.find(bottlesJson.data, { id: x })
-        if (bottle != null)
-          this._pushMessage(
-            <View
-              style={{
-                width: 270,
-                flex: 1,
-                flexWrap: "wrap",
-                flexDirection: "row"
-              }}
-            >
-              <Image
-                style={{ width: 100, height: 250 }}
-                source={{ uri: bottle.photoUrl }}
-              />
-              <View style={{ width: 270 - 100, padding: 15 }}>
-                <RkText style={{ fontSize: 20, color: "#fff" }}>
-                  {bottle.name}
-                </RkText>
-                <RkText style={{ marginTop: 5, fontSize: 10, color: "#fff" }}>
-                  Année: {bottle.age}
-                </RkText>
-                <RkText style={{ fontSize: 10, color: "#fff" }}>
-                  {bottle.price}€
-                </RkText>
-              </View>
-            </View>,
-            false
-          )
+      sleep(500, this.props.navigation.navigate, "Second", {
+        bottleIds: responseMessage.ids
       })
     }
   }
 
   render() {
+    const imgMap = {
+      mexicanos: require("../assets/images/VINY-mexicanos.png"),
+      viking: require("../assets/images/VINY-viking.png"),
+      texas: require("../assets/images/VINY-texas.png"),
+      french: require("../assets/images/VINY-french.png"),
+      base: require("../assets/images/VINY-base.png")
+    }
     return (
-      <DrawerWrapper navigation={this.props.navigation}>
-        <FlatList
-          ref="list"
-          style={{
-            padding: 15,
-            width: width
-          }}
-          extraData={this.state}
-          data={this.state.messages}
-          renderItem={this._renderMessage}
-          keyExtractor={(item: Message) => item.id.toString()}
-        />
+      <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, alignItems: "center" }}>
+          <View style={{ height: 120 }}>
+            <View
+              style={{
+                borderRadius: 25,
+                width: 300,
+                padding: 15,
+                backgroundColor: "#661D32"
+              }}
+            >
+              <RkText style={{ color: "#fff" }}>
+                {this.state.actualMessage}
+              </RkText>
+            </View>
+          </View>
+          <Image
+            style={{ width: 203, height: 250 }}
+            source={imgMap[this.state.vinyPhoto]}
+          />
+        </View>
         <View
           style={{
             width: width,
@@ -248,6 +244,82 @@ export default class ChatScreen extends React.Component<Props, States> {
         >
           {this._renderAllButtons(this.state.buttons)}
         </View>
+      </View>
+    )
+  }
+}
+
+class SecondChatScreen extends RkComponent<Props> {
+  _renderMessage(info: any) {
+    console.log(info)
+    return (
+      <RkCard style={{ marginBottom: 25 }}>
+        <View
+          rkCardContent
+          style={{
+            flex: 1,
+            flexWrap: "wrap",
+            flexDirection: "row"
+          }}
+        >
+          <Image
+            style={{ width: 100, height: 250 }}
+            source={{ uri: info.item.photoUrl }}
+          />
+          <View style={{ width: 270 - 100, padding: 15 }}>
+            <RkText style={{ fontSize: 20 }}>{info.item.name}</RkText>
+            <RkText style={{ marginTop: 5, fontSize: 10 }}>
+              Année: {info.item.age.toString()}
+            </RkText>
+            <RkText style={{ fontSize: 10 }}>
+              {info.item.price.toString()}€
+            </RkText>
+          </View>
+        </View>
+      </RkCard>
+    )
+  }
+
+  render() {
+    const bottleIds = this.props.navigation.state.params.bottleIds
+    const bottles = bottleIds.map(id => _.find(bottlesJson, { id }))
+    return (
+      <View style={{ flex: 1 }}>
+        <FlatList
+          ref="list"
+          style={{
+            padding: 15,
+            width: width
+          }}
+          extraData={this.state}
+          data={bottles}
+          renderItem={this._renderMessage}
+          keyExtractor={(item, i) => i.toString()}
+        />
+      </View>
+    )
+  }
+}
+
+export default class ChatScreen extends RkComponent<Props> {
+  static navigationOptions = {
+    drawerLabel: "Chat",
+    drawerIcon: <Icon name="message-text" size={24} />
+  }
+
+  render() {
+    const Route = SwitchNavigator(
+      {
+        First: FirstChatScreen,
+        Second: SecondChatScreen
+      },
+      {
+        initialRouteName: "First"
+      }
+    )
+    return (
+      <DrawerWrapper navigation={this.props.navigation}>
+        <Route />
       </DrawerWrapper>
     )
   }

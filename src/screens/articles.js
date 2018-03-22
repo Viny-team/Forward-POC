@@ -166,7 +166,7 @@ export default class ArticlesScreen extends RkComponent<Props> {
               <Icon
                 name="account-check"
                 size={40}
-                style={{ color: "#661D32" }}
+                style={{ color: tintColor }}
               />
             )
           }
@@ -179,7 +179,7 @@ export default class ArticlesScreen extends RkComponent<Props> {
               <Icon
                 name="all-inclusive"
                 size={40}
-                style={{ color: "#661D32" }}
+                style={{ color: tintColor }}
               />
             )
           }

@@ -7,6 +7,7 @@ import HomeScreen from "../screens/home"
 import ArticlesScreen from "../screens/articles"
 import CellarScreen from "../screens/cellar"
 import ConseilsScreen from "../screens/conseils"
+import MapsScreen from "../screens/maps"
 
 export const ROUTE_APP = "App"
 export const ROUTE_APP_MENU = "Menu"
@@ -14,6 +15,7 @@ export const ROUTE_APP_CHAT = "Chat"
 export const ROUTE_APP_ARTICLES = "Articles"
 export const ROUTE_APP_CONSEILS = "Conseils"
 export const ROUTE_APP_CAVE = "Cave"
+export const ROUTE_APP_CARTE = "Carte"
 
 const AppStack = DrawerNavigator(
   {
@@ -21,7 +23,8 @@ const AppStack = DrawerNavigator(
     Chat: ChatScreen,
     Articles: ArticlesScreen,
     Conseils: ConseilsScreen,
-    Cave: CellarScreen
+    Cave: CellarScreen,
+    Carte: MapsScreen
   },
   {
     initialRouteName: "Home",

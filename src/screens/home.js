@@ -19,7 +19,7 @@ type Props = {
 }
 type States = {
   username: string,
-  articles: any[]
+  vinyPhoto: string
 }
 
 export default class HomeScreen extends React.Component<Props, States> {
@@ -31,19 +31,34 @@ export default class HomeScreen extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props)
 
-    this.state = { username: "" }
+    this.state = { username: "", vinyPhoto: "base" }
     this._bootstrap()
   }
 
   async _bootstrap() {
     const username: string = await AsyncStorage.getItem("username")
+    const user = _.find(users, { username })
+    if (user != null) {
+      this.setState({ vinyPhoto: user.viny })
+    }
     this.setState({ username })
   }
 
   render() {
+    const imgMap = {
+      mexicanos: require("../assets/images/VINY-mexicanos.png"),
+      viking: require("../assets/images/VINY-viking.png"),
+      texas: require("../assets/images/VINY-texas.png"),
+      french: require("../assets/images/VINY-french.png"),
+      base: require("../assets/images/VINY-base.png")
+    }
     return (
       <DrawerWrapper navigation={this.props.navigation}>
         <View style={{ flex: 1, alignItems: "center" }}>
+          <Image
+            style={{ width: 203, height: 250 }}
+            source={imgMap[this.state.vinyPhoto]}
+          />
           <RkText style={{ fontSize: 40 }}>
             Bienvenue {this.state.username}
           </RkText>

@@ -70,7 +70,7 @@ export default class ConseilsScreen extends RkComponent<Props, States> {
         <View style={{ flex: 1, alignItems: "center" }}>
           {(() => {
             if (this.state.advices.length === 0) {
-              return <RkText>Oops, vous n'avez aucun conseils...</RkText>
+              return <RkText>Oops, vous n'avez aucun conseil...</RkText>
             } else {
               return (
                 <FlatList

@@ -65,7 +65,7 @@ class PersonalArticlesScreen extends RkComponent<Props, States> {
       <View style={{ flex: 1, alignItems: "center" }}>
         {(() => {
           if (this.state.articles.length === 0) {
-            return <RkText>Oops, vous n'avez aucun articles...</RkText>
+            return <RkText>Oops, vous n'avez aucun article...</RkText>
           } else {
             return (
               <FlatList

@@ -1,4 +1,4 @@
-package com.forwardpok;
+package com.viny;
 
 import android.app.Application;
 

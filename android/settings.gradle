@@ -1,4 +1,4 @@
-rootProject.name = 'ForwardPOK'
+rootProject.name = 'Viny'
 
 include ':app'
 

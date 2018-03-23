@@ -3,4 +3,4 @@
 import { AppRegistry } from "react-native"
 import App from "./src/app"
 
-AppRegistry.registerComponent("ForwardPOK", () => App)
+AppRegistry.registerComponent("Viny", () => App)

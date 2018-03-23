@@ -57,11 +57,11 @@ export default class LoginScreen extends React.Component<Props, States> {
           >
             Se connecter
           </RkButton>
-          <RkText style={{ fontSize: 10, marginTop: 5 }}>
+          <RkText style={{ fontSize: 10, marginTop: 5, textAlign: "center" }}>
             En vous connectant, vous confirmez être majeur et en droit de
             consommer de l'alcool.
           </RkText>
-          <RkText style={{ fontSize: 10 }}>
+          <RkText style={{ fontSize: 10, textAlign: "center" }}>
             L'abus d'alcool est dangereux pour la santé.
           </RkText>
         </View>
